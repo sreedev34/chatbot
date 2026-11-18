@@ -56,7 +56,7 @@ pipeline {
                     sh "git clone ${MANIFEST_REPO} . || true"
                     withCredentials([usernamePassword(credentialsId: "${GIT_CREDENTIALS_ID}", usernameVariable: 'GH_USER', passwordVariable: 'GH_TOKEN')]) {
                         sh """
-                            git remote set-url origin https://\${GH_USER}:\${GH_TOKEN}@github.com/suhaaail2004/maker_pipeline.git
+                            git remote set-url origin https://\${GH_USER}:\${GH_TOKEN}@github.com/sreedev34/chatbot.git
                             git pull --rebase origin ${MANIFEST_BRANCH}
                             
                             sed -i '/name: fast-api-chatbot/{n;s|image:.*|image: ${DOCKER_IMAGE}:${env.BUILD_NUMBER}|}' k8s/Deployment.yaml
